@@ -1,0 +1,75 @@
+
+Name: Andrew Barthel
+Username: abarthe
+Email: abarthe@purdue.edu
+
+PART ONE : Password Strength Testing Script (pwcheck.sh)
+
+	Working Features:
+		
+		1.) If the password is less than 6 characters in length or more than 32 characters in length, the password is invalid.  Thus, the output of the script will result in stdout displaying, "Error: Password length invalid." to the terminal and exiting the script once stdout prints to the terminal.
+		2.) Each character in the password counts as one point.  Thus, the script initally sets the points to the length of the password - assuming it is in bounds.
+		3.) If the password contains a special character from the set: {#$+%@}; the point total will increment by 5 points in a one-time allocation.
+		4.) If the password contains at least one number, the point total will increment by 5 points in a one-time allocation.
+		5.) If the password contains at least one alpha character, upper or lower case, the point total will increment by 5 points in a one-time allocation.
+		6.) If the password contains a consecutive repetition of the same alphanumeric character, the point total will decrement by 10 points in a one-time deduction.
+		7.) If the password contains at least three consecutive lowercase characters, the point total will decrement by 3 points in a one-time deduction.
+		8.) If the password contains at least three consecutive uppercase characters, the point total will decrement by 3 points in a one-time deduction.
+		9.) If the password contains at least three consecutive numbers, the point total will decrement by 3 points in a one-time deduction.
+		10.) If there are no arguments, the output of the script will result in stdout displaying a one-line 'usage' guide on how the script expects to be called to the terminal and exiting the script once the message prints.
+		11.) If the argument is not a file, the output of the script will result in stdout displaying a one-line 'usage' guide on how the script expects to be called to the terminal and exiting the script once the message prints.
+		12.) If the argument is a file, but the read flag is not set for user the output of the script will result in stdout displaying a one-line 'usage' guide on how the script expects to be called to the terminal and exiting the script once the message prints.
+
+	Usage/Special Notes:
+
+		Usage:
+
+			The calling convention is in the form of:
+
+			./pwcheck.sh <fileName> 
+
+		Special Notes:
+
+			The shell should, ideally be a bash shell.  The execute flag for pwcheck.sh must be set for at least the user in order to execute the script. The file being passed as the argument should be the only argument - any others will not be read by the script and thus will not have any affect on the output.  The file passed will, however, need to have the read flag be set for at least the user in order for the script to work.  The format of the file should be one line and that line containing the password in which the checking is desired.  The script will read past the first line, thus causing unwanted characters being added to the password which may lead to different scores than desired and or the length going out of bounds when it should not.  The only "error" messages that the script will output will be through stdout to the terminal when the password length is out of bounds, thus printing the before-mentioned "error message".  There may be some extreme situations where another function returns output in stderr.  If the argument passed is nonexistant or not a file, the script will print out a one-line 'usage' guide on how it expects to be called and exits after the message prints to the terminal. Similarly, if the file that was passed as an argument is not readable by the user, the same 'user' guide will be displayed and the script will exit thereafter.
+
+
+
+
+PART TWO : CPU and Memory Monitor (monitor.sh)
+
+	Working Features:
+
+		1.) There are two ways you can run this script.  One with memory and CPU arguments for reports that include both, and one with just CPU arguments which gives reports of just the CPU usage.
+		2.) The monitor script will continue to run until the process that it is monitoring dies.
+		3.) The script creates a directory named '/reports_dir' in the current directory and stores at most maxReports in that directory.  When the directory is full, it will delete the oldest report and put the new one in its' place.
+		4.) Each report is categorized into four pieces of information: PROCESS ID, PROCESS NAME, CPU USAGE, and MEMORY USAGE.
+		5.) These reports will be created every n seconds as directed by the arguments.
+		6.) If the CPU or Memory usage surpasses the arguments for their maximum usage, the user will be emailed a copy of the report as a notification.
+
+	Usage:
+
+		Usage:
+
+			The calling convention is in the form of:
+
+			./monitor.sh <process id> -cpu <maxCPU> -mem <maxMem> <maxReports> <time>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
